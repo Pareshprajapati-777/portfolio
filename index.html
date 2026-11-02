@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paresh Prajapati — AI & ML Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Paresh Prajapati — AI & ML Engineer, Data Scientist and Data Analyst building practical AI applications."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/loader.css" />
+  </head>
+  <body>
+    <!-- Deadpool Cinematic Web Reload / Preloader Overlay -->
+    <aside id="dp-loader" class="dp-loader" aria-label="Loading Portfolio" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <!-- Split panels for Katana slice exit -->
+      <div class="dp-loader-curtain dp-loader-curtain-top"></div>
+      <div class="dp-loader-curtain dp-loader-curtain-bottom"></div>
+
+      <!-- Comic Background Atmosphere -->
+      <div class="dp-loader-bg">
+        <div class="dp-loader-halftone"></div>
+        <div class="dp-loader-radial-glow"></div>
+        <div class="dp-loader-speedlines"></div>
+      </div>
+
+      <!-- Katana Slash Light Effect -->
+      <div class="dp-loader-slash" id="dp-loader-slash"></div>
+
+      <!-- Center Loader Content -->
+      <div class="dp-loader-content">
+        <!-- Floating Comic Action Word Badge -->
+        <div class="dp-loader-badge" id="dp-loader-badge">MAXIMUM EFFORT</div>
+
+        <!-- Deadpool Logo Emblem Container -->
+        <div class="dp-loader-emblem-wrap" title="Click me for maximum effort!">
+          <div class="dp-loader-ring dp-loader-ring-outer"></div>
+          <div class="dp-loader-ring dp-loader-ring-inner"></div>
+          <div class="dp-loader-emblem">
+            <img src="/assets/deadpool-logo.png" alt="Deadpool Mask Logo" class="dp-loader-logo-img" draggable="false" />
+            <div class="dp-loader-eye-glow left-eye"></div>
+            <div class="dp-loader-eye-glow right-eye"></div>
+            <div class="dp-loader-katana-cut"></div>
+          </div>
+        </div>
+
+        <!-- Comic Speech Dialogue Box with Rotating Deadpool Quotes -->
+        <div class="dp-loader-dialogue">
+          <span class="dp-loader-quote-mark">“</span>
+          <p class="dp-loader-quote" id="dp-loader-quote">Hold your chimichangas... reloading awesomeness.</p>
+          <span class="dp-loader-tag">@WADE_WILSON</span>
+        </div>
+
+        <!-- Progress Meter -->
+        <div class="dp-loader-meter-wrap">
+          <div class="dp-loader-meter-header">
+            <span class="dp-loader-status" id="dp-loader-status">RELOAD STATUS: CALIBRATING...</span>
+            <span class="dp-loader-percent" id="dp-loader-percent">0%</span>
+          </div>
+          <div class="dp-loader-meter-track">
+            <div class="dp-loader-meter-fill" id="dp-loader-fill">
+              <div class="dp-loader-meter-flare"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Controls -->
+        <div class="dp-loader-actions">
+          <button type="button" class="dp-loader-skip-btn" id="dp-loader-skip" aria-label="Skip reload animation">
+            SKIP INTRO [ESC]
+          </button>
+          <button type="button" class="dp-loader-sound-btn" id="dp-loader-sound" aria-label="Toggle sound fx">
+            <span class="sound-icon">🔊</span> SFX: ON
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Floating Replay Quick Trigger Button -->
+    <button type="button" class="dp-reload-trigger" onclick="window.replayDeadpoolReload && window.replayDeadpoolReload()" title="Replay Deadpool Reload Animation (Shortcut: R)">
+      <img src="/assets/deadpool-logo.png" alt="Deadpool Logo" />
+      <span>RELOAD VIBE</span>
+      <kbd>R</kbd>
+    </button>
+
+    <!-- Deadpool Multi-Scene Scroll Stage (Driven by Scroll Position) -->
+    <div id="dp-scroll-stage" aria-hidden="true">
+      <div class="dp-ambient-glow"></div>
+      <div class="dp-speedlines" id="dp-speedlines"></div>
+      <div class="dp-slash-streak" id="dp-slash-streak"></div>
+
+      <!-- Scene 1: Hero Stance (1000171027.jpg) -->
+      <div class="dp-stage-layer layer-origin active" data-layer="home">
+        <div class="dp-img-frame">
+          <img class="dp-stage-img" src="/1000171027.jpg" alt="Deadpool Stance" draggable="false" />
+          <div class="dp-badge">MODE: COMBAT READY</div>
+        </div>
+      </div>
+
+      <!-- Scene 2: About Blushing (1000171037.jpg) -->
+      <div class="dp-stage-layer layer-blush" data-layer="about">
+        <div class="dp-img-frame">
+          <img class="dp-stage-img" src="/1000171037.jpg" alt="Deadpool Blushing" draggable="false" />
+          <div class="dp-badge">MODE: MASK BLUSHING</div>
+        </div>
+      </div>
+
+      <!-- Scene 3: Skills Katana Combat (1000171035.jpg) -->
+      <div class="dp-stage-layer layer-katana" data-layer="skills">
+        <div class="dp-img-frame">
+          <img class="dp-stage-img" src="/1000171035.jpg" alt="Deadpool Katana" draggable="false" />
+          <div class="dp-badge">MODE: KATANA CODE</div>
+        </div>
+      </div>
+
+      <!-- Scene 4: Projects Heart Hands (1000171036.jpg) -->
+      <div class="dp-stage-layer layer-heart" data-layer="projects">
+        <div class="dp-img-frame">
+          <img class="dp-stage-img" src="/1000171036.jpg" alt="Deadpool Heart Hands" draggable="false" />
+          <div class="dp-badge">MODE: MADE WITH LOVE ❤️</div>
+        </div>
+      </div>
+
+      <!-- Scene 5: Finale Chimichangas (1000171038.jpg) -->
+      <div class="dp-stage-layer layer-chimichanga" data-layer="contact">
+        <div class="dp-img-frame">
+          <img class="dp-stage-img" src="/1000171038.jpg" alt="Deadpool Maximum Effort" draggable="false" />
+          <div class="dp-badge">MODE: MAXIMUM EFFORT</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating comic particles -->
+    <div id="comic-particles" aria-hidden="true"></div>
+
+    <!-- Fixed comic nav -->
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Paresh Prajapati">
+        <img class="brand-logo" src="/assets/deadpool-logo.png" alt="Deadpool Logo" width="40" height="40" />
+      </a>
+      <nav class="nav">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="stage-tracker" id="stage-tracker">
+        <span class="tracker-dot active" data-target="home" title="Hero"></span>
+        <span class="tracker-dot" data-target="about" title="About"></span>
+        <span class="tracker-dot" data-target="skills" title="Skills"></span>
+        <span class="tracker-dot" data-target="projects" title="Projects"></span>
+        <span class="tracker-dot" data-target="education" title="Education"></span>
+        <span class="tracker-dot" data-target="contact" title="Contact"></span>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. HERO -->
+      <section id="home" class="hero">
+        <div class="halftone halftone-hero" aria-hidden="true"></div>
+        <span class="action-word aw-hero" aria-hidden="true">KABOOM!</span>
+
+        <div class="hero-inner">
+          <p class="hero-line kicker">Ah, you scrolled to the right guy. Welcome to my chaos.</p>
+          <h1 class="hero-line name"></h1>
+          <p class="hero-line titles"></p>
+          <p class="hero-line tagline"></p>
+          <p class="hero-line bio"></p>
+          <p class="hero-line location"></p>
+          <div class="hero-ctas"></div>
+        </div>
+      </section>
+
+      <!-- 2. ABOUT -->
+      <section id="about" class="section">
+        <div class="halftone halftone-red" aria-hidden="true"></div>
+        <div class="container">
+          <h2 class="section-title" data-reveal>About Me</h2>
+          <div class="speech-bubble" data-reveal>
+            <p class="bubble-text"></p>
+          </div>
+          <p class="body-text" data-reveal></p>
+          <div class="focus-wrap" data-reveal>
+            <h3 class="sub-title">Career Focus</h3>
+            <div class="chip-row focus"></div>
+          </div>
+          <div class="strengths-wrap" data-reveal>
+            <h3 class="sub-title">Core Strengths</h3>
+            <div class="chip-row strengths"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SKILLS -->
+      <section id="skills" class="section">
+        <div class="halftone halftone-black" aria-hidden="true"></div>
+        <div class="container">
+          <h2 class="section-title" data-reveal>Skills</h2>
+          <div class="marquee" aria-hidden="true">
+            <div class="marquee-track"></div>
+          </div>
+          <span class="action-word aw-skills" aria-hidden="true">WHA-POW!</span>
+          <div class="skill-grid"></div>
+        </div>
+      </section>
+
+      <!-- 4. PROJECTS -->
+      <section id="projects" class="section">
+        <div class="halftone halftone-red" aria-hidden="true"></div>
+        <div class="container">
+          <h2 class="section-title" data-reveal>Featured Projects</h2>
+          <div class="speech-bubble" data-reveal>
+            <p class="bubble-text"></p>
+          </div>
+          <span class="action-word aw-projects" aria-hidden="true">BOOM!</span>
+          <div class="projects-grid" data-speed="0.2"></div>
+
+          <h3 class="sub-title other-heading" data-reveal>Other Experiments</h3>
+          <div class="chip-row other" data-reveal></div>
+        </div>
+      </section>
+
+      <!-- 5. EDUCATION + CERTIFICATION -->
+      <section id="education" class="section">
+        <div class="halftone halftone-black" aria-hidden="true"></div>
+        <div class="container">
+          <h2 class="section-title" data-reveal>Education & Cert</h2>
+          <span class="action-word aw-edu" aria-hidden="true">ZOOM!</span>
+          <div class="timeline"></div>
+          <div class="cert-card" data-reveal></div>
+        </div>
+      </section>
+
+      <!-- 6. STATS -->
+      <section id="stats" class="section section-stats">
+        <div class="stats-panel" data-speed="0.25"></div>
+      </section>
+
+      <!-- 7. CONTACT -->
+      <section id="contact" class="section">
+        <div class="halftone halftone-red" aria-hidden="true"></div>
+        <div class="container">
+          <h2 class="section-title" data-reveal>Contact</h2>
+          <div class="speech-bubble" data-reveal>
+            <p class="bubble-text"></p>
+          </div>
+          <div class="contact-grid">
+            <a class="contact-card" href="mailto:" data-field="email" data-reveal>
+              <span class="contact-label">Email</span>
+              <span class="contact-value"></span>
+            </a>
+            <a class="contact-card" href="tel:" data-field="phone" data-reveal>
+              <span class="contact-label">Phone</span>
+              <span class="contact-value"></span>
+            </a>
+            <a class="contact-card" href="#" data-field="github" target="_blank" rel="noopener" data-reveal>
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value"></span>
+            </a>
+            <a class="contact-card" href="#" data-field="linkedin" target="_blank" rel="noopener" data-reveal>
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value"></span>
+            </a>
+          </div>
+          <p class="location-line" data-reveal></p>
+        </div>
+        <footer class="footer">
+          <p class="footer-text"></p>
+        </footer>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
