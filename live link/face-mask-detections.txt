@@ -1,0 +1,1 @@
+https://face-mask-detections.vercel.app
