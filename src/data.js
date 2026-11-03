@@ -88,7 +88,8 @@ export const featuredProjects = [
       'Confusion matrix, accuracy & loss analysis',
       'FastAPI backend + React frontend'
     ],
-    url: 'https://github.com/Pareshprajapati-777/Face-Mask-Detection'
+    url: 'https://github.com/Pareshprajapati-777/Face-Mask-Detection',
+    liveUrl: 'https://face-mask-detections.vercel.app'
   },
   {
     n: '02',
@@ -105,7 +106,8 @@ export const featuredProjects = [
       'Date-wise attendance & student-wise reports',
       'CSV export, offline processing'
     ],
-    url: 'https://github.com/Pareshprajapati-777/FACE-ATTENDANCE-SYSTEM'
+    url: 'https://github.com/Pareshprajapati-777/FACE-ATTENDANCE-SYSTEM',
+    liveUrl: 'https://face-attendance-system-on.streamlit.app'
   },
   {
     n: '03',
@@ -122,7 +124,8 @@ export const featuredProjects = [
       'Interactive charts',
       'PDF / Excel / CSV reports'
     ],
-    url: 'https://github.com/Pareshprajapati-777/AI-Solar-Planning-Financial-Analysis-System'
+    url: 'https://github.com/Pareshprajapati-777/AI-Solar-Planning-Financial-Analysis-System',
+    liveUrl: 'https://solar-planning-financial-analysis-system.streamlit.app/'
   },
   {
     n: '04',
@@ -139,7 +142,8 @@ export const featuredProjects = [
       'Interactive maps (Folium)',
       'KPI cards & REST API integration'
     ],
-    url: 'https://github.com/Pareshprajapati-777/Weather-Air-Quality-Dashboard'
+    url: 'https://github.com/Pareshprajapati-777/Weather-Air-Quality-Dashboard',
+    liveUrl: 'https://weather-air-quality-dashboard.streamlit.app'
   },
   {
     n: '05',
@@ -155,7 +159,8 @@ export const featuredProjects = [
       'Prediction confidence',
       'Streamlit interface'
     ],
-    url: 'https://github.com/Pareshprajapati-777/MNIST-Digit-Classification'
+    url: 'https://github.com/Pareshprajapati-777/MNIST-Digit-Classification',
+    liveUrl: 'https://mnist-classification-number.streamlit.app/'
   },
   {
     n: '06',
@@ -171,7 +176,8 @@ export const featuredProjects = [
       'Bar / line / scatter / pie charts',
       'Correlation heatmap'
     ],
-    url: 'https://github.com/Pareshprajapati-777/Car-Data-Analysis-Dashboard'
+    url: 'https://github.com/Pareshprajapati-777/Car-Data-Analysis-Dashboard',
+    liveUrl: 'https://car-data-analysis-dashboard.streamlit.app/'
   },
   {
     n: '07',
@@ -187,7 +193,8 @@ export const featuredProjects = [
       'Prediction',
       'Streamlit interface'
     ],
-    url: 'https://github.com/Pareshprajapati-777/Cat-Dog-Detection'
+    url: 'https://github.com/Pareshprajapati-777/Cat-Dog-Detection',
+    liveUrl: 'https://cat-dog-detection-system.streamlit.app/'
   },
   {
     n: '08',
@@ -204,12 +211,92 @@ export const featuredProjects = [
       'Outlier detection',
       'Data analysis'
     ],
-    url: 'https://github.com/Pareshprajapati-777/Pandas-Practical-Solver'
+    url: 'https://github.com/Pareshprajapati-777/Pandas-Practical-Solver',
+    liveUrl: 'https://pandas-practical-solver.streamlit.app/'
+  },
+  {
+    n: '09',
+    title: 'Cruise Hunt – Maritime Booking Platform',
+    category: 'Full Stack / Web / Three.js',
+    tech: ['React', 'TypeScript', 'Python', 'FastAPI', 'SQLite', 'Tailwind CSS', 'Three.js'],
+    description:
+      'A full-stack cruise and water sports booking platform connecting travelers with ship owners and activity operators.',
+    features: [
+      'Cruise and water sports discovery',
+      'Customer, Owner & Admin dashboards',
+      'Booking and availability management',
+      'Digital tickets, QR verification and booking records'
+    ],
+    url: 'https://github.com/Pareshprajapati-777/Cross-Hunt',
+    liveUrl: 'https://cruise-hunt.vercel.app/'
+  },
+  {
+    n: '10',
+    title: 'Sangeet – Music Intelligence Platform',
+    category: 'AI / ML / Deep Learning / Audio',
+    tech: ['Python', 'Streamlit', 'PyTorch', 'Scikit-learn', 'SQLite', 'Plotly', 'Folium'],
+    description:
+      'An AI-powered music discovery and analytics platform combining machine learning, deep learning and computer vision.',
+    features: [
+      'Content-based music recommendation system',
+      'AI musicologist and conversational assistant',
+      'Facial recognition for artist identification',
+      'Interactive music analytics and geospatial maps'
+    ],
+    url: 'https://github.com/Pareshprajapati-777/Sangeet',
+    liveUrl: 'https://mymusic7.streamlit.app/'
+  },
+  {
+    n: '11',
+    title: 'Lucky Bowl – 3D Lucky Draw Experience',
+    category: '3D Web / Interactive / Three.js',
+    tech: ['JavaScript', 'Three.js', 'GSAP', 'HTML', 'CSS', 'Vite', 'Canvas Confetti'],
+    description:
+      'An interactive 3D lucky draw experience featuring a realistic glass bowl, animated paper selection and cinematic winner reveals.',
+    features: [
+      'Realistic 3D glass bowl visualization',
+      'Interactive hand-picking experience',
+      'Animated paper unfolding and winner reveal',
+      'Smooth GSAP animations and confetti celebration'
+    ],
+    url: 'https://github.com/Pareshprajapati-777/Lucky-Bowl',
+    liveUrl: 'https://luckybowl.vercel.app/'
+  },
+  {
+    n: '12',
+    title: 'Score Dude – Student Evaluation System',
+    category: 'Full Stack / Automation / Web App',
+    tech: ['React', 'JavaScript', 'Node.js', 'Express.js', 'SQLite', 'Tailwind CSS', 'Framer Motion'],
+    description:
+      'A student and candidate evaluation platform that automates scoring, weighted calculations and performance tracking.',
+    features: [
+      'Customizable evaluation criteria',
+      'Automatic scores, percentages and grades',
+      'Candidate management and evaluation history',
+      'CSV exports and printable scorecards'
+    ],
+    url: 'https://github.com/Pareshprajapati-777/Scoredude',
+    liveUrl: 'https://scoredude.vercel.app/'
+  },
+  {
+    n: '13',
+    title: 'Movie Explorer – Cinematic Discovery',
+    category: 'AI / ML / Recommendation System',
+    tech: ['Python', 'Streamlit', 'Pandas', 'REST API', 'NLP'],
+    description:
+      'An intelligent movie recommendation and exploration dashboard with dynamic filtering, ratings analytics and metadata discovery.',
+    features: [
+      'Smart genre, rating and cast-based discovery',
+      'Similarity-based movie recommendation',
+      'Interactive analytics and streaming indicators',
+      'Responsive Streamlit interface'
+    ],
+    url: 'https://github.com/Pareshprajapati-777/Movie-Explorer',
+    liveUrl: 'https://movie-explorers.streamlit.app'
   }
 ];
 
 export const otherProjects = [
-  'Movie Explorer',
   'Tourist Plan',
   'Wikipedia Search Engine',
   'Game Hub',
@@ -251,7 +338,7 @@ export const certification = {
 };
 
 export const stats = [
-  { value: 8, suffix: '+', label: 'Featured Projects' },
+  { value: 13, suffix: '+', label: 'Featured Projects' },
   { value: 70000, suffix: '', label: 'MNIST Dataset Images' },
   { value: 10000, suffix: '+', label: 'Car Dataset Records' },
   { value: 27, suffix: '+', label: 'Pandas Problems' },
@@ -261,7 +348,7 @@ export const stats = [
 export const captions = [
   'Yes, I have that many skills. No, this site is not regenerating my wounds.',
   'Too many skills? No such thing. That’s my healing factor talking.',
-  'AI that wears masks. Attendance that stalks you. None of it is candy.',
+  'AI that wears masks. Attendance that stalks you. Built with maximum effort.',
   'Hit me up — I don’t have a healing factor for unanswered emails.'
 ];
 

@@ -13,7 +13,7 @@ window.__lenis = new Lenis({
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   orientation: 'vertical',
   smoothWheel: true,
-  touchMultiplier: 1.6,
+  touchMultiplier: 1.0,
   wheelMultiplier: 0.85,
   infinite: false
 });
@@ -224,6 +224,7 @@ export function initAnimations() {
     const inner = card.querySelector('.card-inner');
     if (!inner) return;
     card.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return;
       const r = card.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
@@ -264,6 +265,7 @@ export function initAnimations() {
 
   // ---- Interactive mouse parallax on stage character ----
   window.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') return;
     const xRatio = e.clientX / window.innerWidth - 0.5;
     const yRatio = e.clientY / window.innerHeight - 0.5;
 

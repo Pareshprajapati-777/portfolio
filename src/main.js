@@ -1,3 +1,12 @@
+// Force scroll restoration to manual and pin to top on load & reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+
 import gsap from 'gsap';
 import { initAnimations } from './scroll/animations.js';
 import { initLoader } from './scroll/loader.js';
@@ -142,14 +151,28 @@ featuredProjects.forEach((p) => {
     feats.appendChild(li);
   });
 
+  const actions = document.createElement('div');
+  actions.className = 'card-actions';
+
   const link = document.createElement('a');
   link.className = 'btn btn-dark btn-wrap card-link';
   link.textContent = 'View on GitHub ↗';
   link.href = p.url;
   link.target = '_blank';
   link.rel = 'noopener';
+  actions.appendChild(link);
 
-  inner.append(header, cat, title, tech, desc, feats, link);
+  if (p.liveUrl) {
+    const liveLink = document.createElement('a');
+    liveLink.className = 'btn btn-red btn-wrap card-link card-link-live';
+    liveLink.textContent = 'Live Demo ↗';
+    liveLink.href = p.liveUrl;
+    liveLink.target = '_blank';
+    liveLink.rel = 'noopener';
+    actions.appendChild(liveLink);
+  }
+
+  inner.append(header, cat, title, tech, desc, feats, actions);
   card.appendChild(inner);
   grid.appendChild(card);
 });
@@ -247,6 +270,10 @@ document.querySelectorAll('.tracker-dot').forEach((dot) => {
 // ---- Boot animations with Deadpool cinematic loader ----
 let animationsInitialized = false;
 initLoader(() => {
+  window.scrollTo(0, 0);
+  if (window.__lenis) {
+    window.__lenis.scrollTo(0, { immediate: true });
+  }
   if (!animationsInitialized) {
     animationsInitialized = true;
     requestAnimationFrame(() => initAnimations());

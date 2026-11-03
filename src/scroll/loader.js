@@ -149,6 +149,10 @@ const DP_QUOTES = [
 ];
 
 export function initLoader(onCompleteCallback) {
+  window.scrollTo(0, 0);
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
   const loader = document.getElementById('dp-loader');
   if (!loader) {
     if (typeof onCompleteCallback === 'function') onCompleteCallback();
@@ -242,6 +246,8 @@ export function initLoader(onCompleteCallback) {
     if (activeTimeline) activeTimeline.kill();
 
     if (immediate) {
+      window.scrollTo(0, 0);
+      if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
       loader.classList.add('dp-loader-done');
       if (typeof onCompleteCallback === 'function') onCompleteCallback();
       return;
@@ -259,6 +265,8 @@ export function initLoader(onCompleteCallback) {
 
     const exitTl = gsap.timeline({
       onComplete: () => {
+        window.scrollTo(0, 0);
+        if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
         loader.classList.add('dp-loader-done');
         if (typeof onCompleteCallback === 'function') onCompleteCallback();
       }
