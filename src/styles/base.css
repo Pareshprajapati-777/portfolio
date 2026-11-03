@@ -3,6 +3,8 @@
    Powered by lets-scroll Cinematic Scroll-Driven Engine
    ============================================================= */
 
+@import 'lenis/dist/lenis.css';
+
 :root {
   --dp-red: #da2011;
   --dp-red-bright: #ff2a18;
@@ -25,6 +27,9 @@
 html {
   scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  height: auto;
+  min-height: 100%;
 }
 
 body {
@@ -32,12 +37,10 @@ body {
   background: var(--dp-dark);
   color: var(--dp-bone);
   line-height: 1.6;
-  overflow-x: hidden;
-  overflow-y: auto;
   width: 100%;
   min-height: 100%;
   position: relative;
-  touch-action: pan-y;
+  overflow-x: clip;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -785,15 +788,13 @@ section {
 @media (max-width: 768px) {
   /* Ensure unrestricted vertical scrolling on mobile */
   html {
-    overflow-x: visible;
+    overflow-x: clip;
     height: auto;
   }
   body {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: clip;
     width: 100%;
     position: relative;
-    touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
   }
   main {
@@ -939,7 +940,7 @@ section {
     padding: calc(75px + env(safe-area-inset-top, 0px)) 16px 45px;
     min-height: auto;
     position: relative;
-    overflow-x: clip;
+    overflow: visible;
   }
   .container {
     width: 100%;
@@ -955,7 +956,7 @@ section {
     padding-top: calc(72px + env(safe-area-inset-top, 0px));
     padding-bottom: 45px;
     box-sizing: border-box;
-    overflow-x: clip;
+    overflow: visible;
   }
   .hero-inner {
     margin-left: 0;

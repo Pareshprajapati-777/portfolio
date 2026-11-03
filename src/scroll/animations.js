@@ -7,23 +7,58 @@ import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ---- Lenis smooth scroll ----
-window.__lenis = new Lenis({
-  duration: 1.4,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: 'vertical',
-  smoothWheel: true,
-  touchMultiplier: 1.0,
-  wheelMultiplier: 0.85,
-  infinite: false
-});
-const lenis = window.__lenis;
+// ---- Lenis smooth scroll (Desktop) & Native Momentum Scroll (Touch/Mobile) ----
+const isTouchDevice =
+  typeof window !== 'undefined' &&
+  (ScrollTrigger.isTouch === 1 ||
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    window.matchMedia('(pointer: coarse)').matches);
+
+if (isTouchDevice) {
+  // Mobile / touch devices use 100% native momentum scrolling with 0 event listener overhead
+  window.__lenis = {
+    scrollTo(target, opts = {}) {
+      let top = 0;
+      if (typeof target === 'number') {
+        top = target;
+      } else if (typeof target === 'string') {
+        const el = document.querySelector(target);
+        if (el) top = el.getBoundingClientRect().top + window.scrollY + (opts.offset || 0);
+      } else if (target instanceof HTMLElement) {
+        top = target.getBoundingClientRect().top + window.scrollY + (opts.offset || 0);
+      }
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: opts.immediate ? 'instant' : 'smooth'
+      });
+    },
+    on: () => {},
+    off: () => {},
+    destroy: () => {},
+    raf: () => {},
+    isStopped: false,
+    isLocked: false
+  };
+} else {
+  window.__lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    smoothWheel: true,
+    touchMultiplier: 1.0,
+    wheelMultiplier: 0.85,
+    infinite: false
+  });
+  const lenis = window.__lenis;
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+}
 
 window.addEventListener('scroll', ScrollTrigger.update, { passive: true });
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
 
 // ---- Generate comic particles ----
 function createParticles() {
@@ -106,16 +141,43 @@ export function initAnimations() {
 
   // ---- Velocity-driven speedlines ----
   let velocityTimeout;
-  lenis.on('scroll', (e) => {
-    const vel = Math.abs(e.velocity);
-    if (vel > 3 && speedlines) {
-      speedlines.classList.add('active');
-      clearTimeout(velocityTimeout);
-      velocityTimeout = setTimeout(() => {
-        speedlines.classList.remove('active');
-      }, 150);
-    }
-  });
+  if (window.__lenis && typeof window.__lenis.on === 'function') {
+    window.__lenis.on('scroll', (e) => {
+      const vel = Math.abs(e.velocity || 0);
+      if (vel > 3 && speedlines) {
+        speedlines.classList.add('active');
+        clearTimeout(velocityTimeout);
+        velocityTimeout = setTimeout(() => {
+          speedlines.classList.remove('active');
+        }, 150);
+      }
+    });
+  }
+
+  // Also support speedlines on native mobile scroll
+  let lastScrollY = window.scrollY;
+  let lastScrollTime = Date.now();
+  window.addEventListener(
+    'scroll',
+    () => {
+      const now = Date.now();
+      const dt = now - lastScrollTime;
+      if (dt > 16) {
+        const dy = Math.abs(window.scrollY - lastScrollY);
+        const vel = dy / dt;
+        if (vel > 1.8 && speedlines) {
+          speedlines.classList.add('active');
+          clearTimeout(velocityTimeout);
+          velocityTimeout = setTimeout(() => {
+            speedlines.classList.remove('active');
+          }, 150);
+        }
+        lastScrollY = window.scrollY;
+        lastScrollTime = now;
+      }
+    },
+    { passive: true }
+  );
 
   // ---- Global reveal helper ([data-reveal]) ----
   gsap.utils.toArray('[data-reveal]').forEach((el) => {

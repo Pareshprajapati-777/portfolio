@@ -275,11 +275,11 @@ if (navToggle) {
   });
 }
 
-// Nav link smooth scroll & auto close mobile menu
-document.querySelectorAll('.nav-link').forEach((link) => {
+// Anchor link smooth scroll & auto close mobile menu
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
     const href = link.getAttribute('href');
-    if (href && href.startsWith('#')) {
+    if (href && href.length > 1) {
       const targetEl = document.querySelector(href);
       if (targetEl) {
         e.preventDefault();
