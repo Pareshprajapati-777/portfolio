@@ -248,7 +248,7 @@ export function initLoader(onCompleteCallback) {
     if (immediate) {
       window.scrollTo(0, 0);
       if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
-      loader.classList.add('dp-loader-done');
+      loader.classList.add('dp-loader-done'); loader.style.display = 'none';
       if (typeof onCompleteCallback === 'function') onCompleteCallback();
       return;
     }
@@ -267,7 +267,7 @@ export function initLoader(onCompleteCallback) {
       onComplete: () => {
         window.scrollTo(0, 0);
         if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
-        loader.classList.add('dp-loader-done');
+        loader.classList.add('dp-loader-done'); loader.style.display = 'none';
         if (typeof onCompleteCallback === 'function') onCompleteCallback();
       }
     });
@@ -376,7 +376,7 @@ export function initLoader(onCompleteCallback) {
   // Expose Replay function globally
   window.replayDeadpoolReload = function () {
     isDismissed = false;
-    loader.classList.remove('dp-loader-done');
+    loader.classList.remove('dp-loader-done'); loader.style.display = 'flex';
     loader.style.opacity = '1';
     loader.style.visibility = 'visible';
 

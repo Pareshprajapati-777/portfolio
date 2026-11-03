@@ -22,7 +22,10 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: auto; }
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   font-family: var(--font-body);
@@ -30,12 +33,21 @@ body {
   color: var(--dp-bone);
   line-height: 1.6;
   overflow-x: hidden;
-  overscroll-behavior: none;
+  overflow-y: auto;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* =============================================================
    1. MULTI-STAGE SCROLL COMPANION & STAGE (#dp-scroll-stage)
    ============================================================= */
+#dp-scroll-stage,
+#dp-scroll-stage * {
+  pointer-events: none !important;
+}
 #dp-scroll-stage {
   position: fixed;
   inset: 0;
@@ -771,14 +783,29 @@ section {
 }
 
 @media (max-width: 768px) {
-  /* Prevent horizontal scroll & viewport shift */
-  html, body {
-    max-width: 100vw;
-    overflow-x: hidden;
+  /* Ensure unrestricted vertical scrolling on mobile */
+  html {
+    overflow-x: visible;
+    height: auto;
   }
-  main, section {
-    max-width: 100vw;
-    overflow-x: clip;
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    position: relative;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  main {
+    width: 100%;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+  section {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
   }
 
   /* Topbar: Fixed Compact Header (Logo on Left, 3-Line Hamburger on Right) */
