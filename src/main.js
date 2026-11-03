@@ -256,13 +256,64 @@ placed.forEach((sel, i) => {
   if (el) el.textContent = actionWords[(i + 1) % actionWords.length];
 });
 
+// ---- Mobile Navigation Toggle & Smooth Scrolling ----
+const navToggle = document.getElementById('dp-nav-toggle');
+const topbarNav = document.getElementById('topbar-nav');
+
+function toggleMobileNav(force) {
+  if (!topbarNav || !navToggle) return;
+  const shouldOpen = force !== undefined ? force : !topbarNav.classList.contains('open');
+  topbarNav.classList.toggle('open', shouldOpen);
+  navToggle.classList.toggle('open', shouldOpen);
+  navToggle.setAttribute('aria-expanded', String(shouldOpen));
+}
+
+if (navToggle) {
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileNav();
+  });
+}
+
+// Nav link smooth scroll & auto close mobile menu
+document.querySelectorAll('.nav-link').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+        toggleMobileNav(false);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(targetEl, { offset: -10, duration: 1.1 });
+        } else {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  });
+});
+
+// Close mobile menu on outside tap
+document.addEventListener('click', (e) => {
+  if (topbarNav && topbarNav.classList.contains('open')) {
+    if (!topbarNav.contains(e.target) && !navToggle.contains(e.target)) {
+      toggleMobileNav(false);
+    }
+  }
+});
+
 // ---- Tracker Dot Smooth Navigation ----
 document.querySelectorAll('.tracker-dot').forEach((dot) => {
   dot.addEventListener('click', () => {
     const target = dot.dataset.target;
     const targetEl = document.getElementById(target);
     if (targetEl) {
-      targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (window.__lenis) {
+        window.__lenis.scrollTo(targetEl, { offset: -10, duration: 1.1 });
+      } else {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   });
 });
